@@ -1,0 +1,33 @@
+---
+- name: get service loadbalancer url and change dns record
+  hosts: localhost
+  gather_facts: false
+
+
+  tasks:
+    - name: Get an existing Service object
+      k8s_info:
+        api_version: v1
+        kind: Service
+        name: web-staticweb
+        namespace: default
+      register: web_service
+
+    - debug: 
+        var: web_service.resources[0].status.loadBalancer.ingress[0].hostname
+    
+
+    - name: change route 53 hosted zone record
+      route53:
+        state: present
+        zone: design4dong.com
+        record: www.design4dong.com
+        type: CNAME
+        overwrite: yes
+        ttl: 7200
+        value: "{{web_service.resources[0].status.loadBalancer.ingress[0].hostname}}"
+        wait: yes
+      register: mydns
+  
+    - debug:
+        var: mydns

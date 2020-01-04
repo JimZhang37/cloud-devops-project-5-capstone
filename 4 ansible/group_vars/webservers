@@ -1,0 +1,5 @@
+---
+
+apache_docroot: /var/www/html
+apache_config: /etc/httpd/conf/httpd.conf
+

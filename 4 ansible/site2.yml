@@ -1,0 +1,33 @@
+---
+- name: apply the common configuration to all hosts
+  hosts: all
+  remote_user: vagrant
+  become: yes
+
+  roles: 
+  - common
+
+- name: apply the database configuration
+  hosts: dbservers
+  remote_user: vagrant
+  become: yes
+
+  roles:
+  - mariadb
+
+- name: apply apache 
+  hosts: webservers
+  remote_user: vagrant
+  become: yes
+
+  roles:
+  - apache
+  - web 
+
+- name: apply loadbalancer
+  hosts: lbservers
+  remote_user: vagrant
+  become: yes
+
+  roles:
+  - apache

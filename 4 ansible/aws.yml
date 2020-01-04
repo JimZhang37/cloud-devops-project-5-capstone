@@ -1,0 +1,34 @@
+---
+- name: Start sandbox instances
+  hosts: localhost
+  gather_facts: false
+  vars:
+    instance_ids:
+      - 'i-066a8f670e946785f'
+    region: us-east-2
+  tasks:
+    - name: Start the sandbox instances
+      ec2:
+        instance_ids: '{{ instance_ids }}'
+        region: '{{ region }}'
+        state: running
+        wait: True
+        vpc_subnet_id: subnet-8ec584e7
+      register: myec2
+
+    - debug: 
+        var: myec2.instances[0].public_ip
+    
+    - name: change route 53 hosted zone record
+      route53:
+        state: present
+        zone: design4dong.com
+        record: www.design4dong.com
+        type: A
+        ttl: 7200
+        value: "{{myec2.instances[0].public_ip}}"
+        wait: yes
+      register: mydns
+
+    - debug:
+        var: mydns

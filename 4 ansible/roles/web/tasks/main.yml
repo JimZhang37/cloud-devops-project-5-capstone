@@ -1,0 +1,9 @@
+---
+- name: install git
+  yum: name=git state=present
+
+- name: checkout app
+  git: repo=http://git.com/abc.git version="{{version|string}}"
+
+- name: set permission on app
+  file: name=/var/www/lameapp/lame.py mode=0755

@@ -1,0 +1,6 @@
+---
+- name: install epel repo
+  yum: name=epel-release state=present
+
+- include: ntp.yml
+- include: selinux.yml
