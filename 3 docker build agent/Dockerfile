@@ -9,5 +9,5 @@ RUN mv linux-amd64/helm /usr/local/bin/helm
 RUN mkdir .kube 
 RUN touch .kube/config
 
-RUN sudo apt-get install docker-ce docker-ce-cli containerd.io
+RUN apt-get install docker-ce docker-ce-cli containerd.io
   
