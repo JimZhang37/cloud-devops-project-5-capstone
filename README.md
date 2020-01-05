@@ -141,3 +141,10 @@ ingredients are ready. It's time to put them in 2 pipelines. Or 3.
 1, it's a pipeline to create k8s cluster and destroy it.
 2, it's a pipeline for blue stack. It doesn't need to think about swap 2 stacks, so it's simpler. 
 3, it's a pipeline for blue/green deployment. 
+
+# Day 12 (5 January 2020)
+## Completed:
+the first part of blue stack is to build a docker image and upload it to docker hub.
+
+## Todo
+the second part of blue stack, is to use helm to deploy it.

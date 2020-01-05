@@ -4,7 +4,7 @@ pipeline {
 
     stages {
         stage('Build Static Website') {
-            agent any
+            agent any //you can't build docker image in a docker image
             steps {
                 dir ('2 static web site'){
                   sh 'pwd'
