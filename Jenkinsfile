@@ -10,7 +10,8 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-
+        dir("2 static web site")
+        sh "pwd"
         app = docker.build("zhangyhgg/hellonode")
     }
 
