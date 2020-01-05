@@ -1,5 +1,8 @@
 pipeline {
     agent none
+    script{
+      def customImage
+    }
     stages {
         stage('Build Static Website') {
             agent any
@@ -7,7 +10,7 @@ pipeline {
                 dir ('2 static web site'){
                   sh 'pwd'
                   script {
-                      def customImage = docker.build("zhangyhgg/hellonode:v2")
+                      customImage = docker.build("zhangyhgg/hellonode:v2")
 
                   }
                 }
