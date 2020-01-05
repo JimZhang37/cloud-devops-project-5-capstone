@@ -1,9 +1,8 @@
 pipeline {
-    agent {
-        docker { image 'zhangyhgg/cicd:v1' }
-    }
+    agent none
     stages {
         stage('Build Static Website') {
+            agent any
             steps {
                 dir ('2 static web site'){
                   sh 'pwd'
@@ -12,24 +11,27 @@ pipeline {
                       customImage.push()
                   }
                 }
-                
                 echo 'Hello world!'
                 sh 'pwd'
             }
         }
         stage('Test Docker Image') {
+            agent {
+              docker { image 'zhangyhgg/cicd:v1' }
+            }
             steps {
-
                 echo 'Hello world!'
                 sh 'pwd'
             }
         }
         stage('Upload Docker Image') {
+            agent any
             steps {
 
                 script {
-                    def customImage = docker.build("zhangyhgg/hellonode:v2")
-                    customImage.push()
+                  docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                      app.push("v2")
+                  }
                 }
             }
         }
