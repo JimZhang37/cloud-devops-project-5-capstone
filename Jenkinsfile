@@ -5,8 +5,10 @@ pipeline {
     stages {
         stage('Build Static Website') {
             steps {
-                dir ('2 static web site')
-                sh 'pwd'
+                dir ('2 static web site'){
+                  sh 'pwd'
+                }
+                
                 echo 'Hello world!'
             }
         }
