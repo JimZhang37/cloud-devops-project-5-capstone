@@ -9,7 +9,7 @@ pipeline {
                 dir ('2 static web site'){
                   sh 'pwd'
                   script {
-                      customImage = docker.build("zhangyhgg/hellonode:v2")
+                      customImage = docker.build("zhangyhgg/hellonode")
 
                   }
                 }
@@ -32,7 +32,7 @@ pipeline {
 
                 script {
                   docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                      customImage.push("latest")
+                      customImage.push("2")
                   }
                 }
             }
