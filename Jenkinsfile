@@ -7,26 +7,39 @@ pipeline {
             steps {
                 dir ('2 static web site'){
                   sh 'pwd'
-                  sh 'helm version'
-                  sh 'echo $PATH'
+                  script {
+                      def customImage = docker.build("zhangyhgg/hellonode:v2")
+                      customImage.push()
+                  }
                 }
                 
                 echo 'Hello world!'
                 sh 'pwd'
             }
         }
-        stage('Build Docker Image') {
+        stage('Test Docker Image') {
             steps {
-                dir ('3 docker build agent'){
-                  sh 'pwd'
-                  sh 'ls'
-                  sh 'docker version'
-                  sh 'ls'
-                }
-                
+
                 echo 'Hello world!'
                 sh 'pwd'
             }
         }
+        stage('Upload Docker Image') {
+            steps {
+
+                script {
+                    def customImage = docker.build("zhangyhgg/hellonode:v2")
+                    customImage.push()
+                }
+            }
+        }
+        // stage('Deploy Blue Stack') {
+        //     steps {
+        //         //kubectl and credentials
+        //         sh 'helm install web ./5\ helm/staticweb --wait'
+        //         echo 'helm deploy!'
+        //         sh 'ansible-playbook ./4\ ansible/k8s.yml'
+        //     }
+        // }
     }
 }
