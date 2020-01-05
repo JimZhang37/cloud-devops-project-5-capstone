@@ -12,6 +12,7 @@ pipeline {
                 }
                 
                 echo 'Hello world!'
+                sh 'pwd'
             }
         }
         stage('Build Docker Image') {
@@ -22,6 +23,7 @@ pipeline {
                 }
                 
                 echo 'Hello world!'
+                sh 'pwd'
             }
         }
     }
