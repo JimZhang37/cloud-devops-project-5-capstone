@@ -7,6 +7,8 @@ pipeline {
             steps {
                 dir ('2 static web site'){
                   sh 'pwd'
+                  sh 'helm version'
+                  sh 'echo $PATH'
                 }
                 
                 echo 'Hello world!'
