@@ -1,37 +1,14 @@
-node("zhangyhgg/cicd:v1") {
-    def app
-
-    stage('Clone repository') {
-        /* Let's make sure we have the repository cloned to our workspace */
-
-        checkout scm
+pipeline {
+    agent {
+        docker { image 'zhangyhgg/cicd:v1' }
     }
-
-    stage('Build image') {
-        /* This builds the actual image; synonymous to
-         * docker build on the command line */
-        dir("2 static web site")
-        sh "pwd"
-        // app = docker.build("zhangyhgg/hellonode")
-    }
-
-    stage('Test image') {
-        /* Ideally, we would run a test framework against our image.
-         * For this example, we're using a Volkswagen-type approach ;-) */
-
-        // app.inside {
-        //     sh 'echo "Tests passed"'
-        // }
-    }
-
-    stage('Push image') {
-        /* Finally, we'll push the image with two tags:
-         * First, the incremental build number from Jenkins
-         * Second, the 'latest' tag.
-         * Pushing multiple tags is cheap, as all the layers are reused. */
-        // docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-        //     app.push("${env.BUILD_NUMBER}")
-        //     app.push("latest")
-        // }
+    stages {
+        stage('Build Static Website') {
+            steps {
+                dir ('2 static web site')
+                sh 'pwd'
+                echo 'Hello world!'
+            }
+        }
     }
 }
