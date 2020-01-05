@@ -20,7 +20,7 @@ pipeline {
                 dir ('3 docker build agent'){
                   sh 'pwd'
                   sh 'ls'
-                  sh 'make build'
+                  sh 'docker version'
                   sh 'ls'
                 }
                 
