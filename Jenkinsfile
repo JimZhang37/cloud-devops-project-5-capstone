@@ -1,4 +1,4 @@
-node("zhangyhgg/cicd") {
+node("zhangyhgg/cicd:v1") {
     def app
 
     stage('Clone repository') {
