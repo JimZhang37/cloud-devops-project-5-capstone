@@ -12,5 +12,15 @@ pipeline {
                 echo 'Hello world!'
             }
         }
+        stage('Build Docker Image') {
+            steps {
+                dir ('3 docker build agent'){
+                  sh 'pwd'
+                  sh 'ls'
+                }
+                
+                echo 'Hello world!'
+            }
+        }
     }
 }
