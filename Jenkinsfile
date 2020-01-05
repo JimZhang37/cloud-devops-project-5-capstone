@@ -8,7 +8,7 @@ pipeline {
                   sh 'pwd'
                   script {
                       def customImage = docker.build("zhangyhgg/hellonode:v2")
-                      customImage.push()
+
                   }
                 }
                 echo 'Hello world!'
