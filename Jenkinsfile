@@ -1,8 +1,7 @@
+def customImage
 pipeline {
     agent none
-    script{
-      def customImage
-    }
+
     stages {
         stage('Build Static Website') {
             agent any
