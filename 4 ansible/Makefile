@@ -40,5 +40,5 @@ k8s:
 terraform:
 	ansible-playbook terraform.yml
 
-terraformsave:
+terraformdelete:
 	ansible-playbook terraforminfo.yml

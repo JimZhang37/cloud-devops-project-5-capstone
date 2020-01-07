@@ -36,34 +36,34 @@
     - debug:
         var: mydns
 
-- name: download git repo and run terraform in the shell
-  hosts: us-east-2
-  gather_facts: false
-  remote_user: ubuntu
-  become: yes
+# - name: download git repo and run terraform in the shell
+#   hosts: us-east-2
+#   gather_facts: false
+#   remote_user: ubuntu
+#   become: yes
   
-  tasks:
+#   tasks:
 
-    - name: download repo from git
-      git:
-        repo: 'https://github.com/JimZhang37/cloud-devops-project-5-capstone.git'
-        dest: /repo/
-      register: repo
+#     - name: download repo from git
+#       git:
+#         repo: 'https://github.com/JimZhang37/cloud-devops-project-5-capstone.git'
+#         dest: /repo/
+#       register: repo
 
-    - debug: 
-        var: repo
+#     - debug: 
+#         var: repo
     
-    - name: run terraform apply
-      terraform:
-        project_path: 'cloud-devops-project-5-capstone/1 terraform'
-        state: present
-      register: terraform
+#     - name: run terraform apply
+#       terraform:
+#         project_path: 'cloud-devops-project-5-capstone/1 terraform'
+#         state: present
+#       register: terraform
 
-    - debug:
-        var: terraform.outputs.kubeconfig.value
+#     - debug:
+#         var: terraform.outputs.kubeconfig.value
 
-    - name: save kubectl config 
-      copy:
-        content: '{{terraform.outputs.kubeconfig.value}}'
-        dest: /home/ubuntu/.kube/config
+#     - name: save kubectl config 
+#       copy:
+#         content: '{{terraform.outputs.kubeconfig.value}}'
+#         dest: /home/ubuntu/.kube/config
         

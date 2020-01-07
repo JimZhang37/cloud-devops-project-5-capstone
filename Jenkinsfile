@@ -1,9 +1,10 @@
 def customImage
 pipeline {
-    agent any
+    agent none
 
     stages {
         stage('Build Static Website') {
+            agent any
             steps {
                 dir ('2 static web site'){
                   sh 'pwd'
@@ -17,14 +18,14 @@ pipeline {
             }
         }
         stage('Test Docker Image') {
-
+            agent any
             steps {
                 echo 'Hello world!'
                 sh 'pwd'
             }
         }
         stage('Upload Docker Image') {
-
+            agent any
             steps {
 
                 script {
@@ -35,11 +36,13 @@ pipeline {
             }
         }
         stage('Deploy Blue Stack') {
-
+            agent {
+              docker { image 'zhangyhgg/cicd:2' }
+            }
             steps {
                 //kubectl and credentials
                 // echo $PATH
-                sh '/usr/bin/kubectl version'
+                sh 'kubectl version'
                 // sh 'helm install web ./5 helm/staticweb --wait'
                 // echo 'helm deploy!'
                 // sh 'ansible-playbook ./4\ ansible/k8s.yml'
