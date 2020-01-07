@@ -1,10 +1,9 @@
 def customImage
 pipeline {
-    agent none
+    agent any
 
     stages {
         stage('Build Static Website') {
-            agent any //you can't build docker image in a docker image
             steps {
                 dir ('2 static web site'){
                   sh 'pwd'
@@ -18,14 +17,14 @@ pipeline {
             }
         }
         stage('Test Docker Image') {
-            agent any
+
             steps {
                 echo 'Hello world!'
                 sh 'pwd'
             }
         }
         stage('Upload Docker Image') {
-            agent any
+
             steps {
 
                 script {
@@ -36,7 +35,7 @@ pipeline {
             }
         }
         stage('Deploy Blue Stack') {
-            agent any
+
             steps {
                 //kubectl and credentials
                 // echo $PATH
