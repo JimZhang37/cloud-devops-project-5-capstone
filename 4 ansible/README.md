@@ -12,3 +12,5 @@ ansible all -i hosts -u vagrant -m ping
 ansible all -i hosts -u vagrant -m setup
 ansible webserver -i hoost -u vagrant -m yum -a "name=httpd state=present" -b
 ansible-playbook -i hosts playbook.yml
+
+In a playbook, you can configure remote user and host. 
