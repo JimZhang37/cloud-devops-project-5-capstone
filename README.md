@@ -148,3 +148,19 @@ the first part of blue stack is to build a docker image and upload it to docker 
 
 ## Todo
 the second part of blue stack, is to use helm to deploy it.
+
+# Day 13
+install aws, python, pip, (python3, pip3), terraform, kubectl, aws-iam-authenticator and helm in build server
+
+grant a priviledged role to build server so that it can run aws cli.
+
+in terraform, i have to type yes. what can i do in ansible
+
+# Day 15 (7 January 2020)
+# completed
+ansible script to provision build server and k8s cluster
+
+# todo
+blue stack deployment
+
+green stack deployment

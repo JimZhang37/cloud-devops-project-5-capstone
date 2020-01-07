@@ -36,3 +36,9 @@ test:
 
 k8s:
 	ansible-playbook k8s.yml
+
+terraform:
+	ansible-playbook terraform.yml
+
+terraformsave:
+	ansible-playbook terraforminfo.yml

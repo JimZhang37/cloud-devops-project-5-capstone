@@ -1,5 +1,5 @@
 ---
-- name: Start sandbox instances
+- name: Start CICD instance
   hosts: localhost
   gather_facts: false
   vars:
@@ -7,7 +7,7 @@
       - 'i-066a8f670e946785f'
     region: us-east-2
   tasks:
-    - name: Start the sandbox instances
+    - name: Start the instances
       ec2:
         instance_ids: '{{ instance_ids }}'
         region: '{{ region }}'
@@ -18,7 +18,9 @@
 
     - debug: 
         var: myec2.instances[0].public_ip
-    
+    - debug: 
+        var: myec2
+
     - name: change route 53 hosted zone record
       route53:
         state: present
@@ -28,7 +30,40 @@
         ttl: 7200
         value: "{{myec2.instances[0].public_ip}}"
         wait: yes
+        overwrite: yes
       register: mydns
 
     - debug:
         var: mydns
+
+- name: download git repo and run terraform in the shell
+  hosts: us-east-2
+  gather_facts: false
+  remote_user: ubuntu
+  become: yes
+  
+  tasks:
+
+    - name: download repo from git
+      git:
+        repo: 'https://github.com/JimZhang37/cloud-devops-project-5-capstone.git'
+        dest: /repo/
+      register: repo
+
+    - debug: 
+        var: repo
+    
+    - name: run terraform apply
+      terraform:
+        project_path: 'cloud-devops-project-5-capstone/1 terraform'
+        state: present
+      register: terraform
+
+    - debug:
+        var: terraform.outputs.kubeconfig.value
+
+    - name: save kubectl config 
+      copy:
+        content: '{{terraform.outputs.kubeconfig.value}}'
+        dest: /home/ubuntu/.kube/config
+        

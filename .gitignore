@@ -721,3 +721,4 @@ z backup(not needed)/service loadbalancer.json
 1 terraform/.terraform/plugins/darwin_amd64/lock.json
 1 terraform/.terraform/plugins/darwin_amd64/terraform-provider-aws_v2.43.0_x4
 1 terraform/.terraform/plugins/darwin_amd64/terraform-provider-http_v1.1.1_x4
+1 terraform/.terraform/*

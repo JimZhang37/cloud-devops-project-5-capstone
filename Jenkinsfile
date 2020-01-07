@@ -18,9 +18,7 @@ pipeline {
             }
         }
         stage('Test Docker Image') {
-            agent {
-              docker { image 'zhangyhgg/cicd:v1' }
-            }
+            agent any
             steps {
                 echo 'Hello world!'
                 sh 'pwd'
@@ -37,13 +35,14 @@ pipeline {
                 }
             }
         }
-        // stage('Deploy Blue Stack') {
-        //     steps {
-        //         //kubectl and credentials
-        //         sh 'helm install web ./5\ helm/staticweb --wait'
-        //         echo 'helm deploy!'
-        //         sh 'ansible-playbook ./4\ ansible/k8s.yml'
-        //     }
-        // }
+        stage('Deploy Blue Stack') {
+            agent any
+            steps {
+                //kubectl and credentials
+                sh 'helm install web ./5\ helm/staticweb --wait'
+                echo 'helm deploy!'
+                sh 'ansible-playbook ./4\ ansible/k8s.yml'
+            }
+        }
     }
 }

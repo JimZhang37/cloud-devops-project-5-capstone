@@ -1,0 +1,68 @@
+---
+- name: download git repo and run terraform in the shell
+  hosts: us-east-2
+  gather_facts: false
+  remote_user: ubuntu
+  become: yes
+  
+  tasks:
+    # - name: ls
+    #   command: ls
+    #   register: pwd
+
+    # - debug: 
+    #     var: pwd
+
+    - name: download repo from git
+      git:
+        repo: 'https://github.com/JimZhang37/cloud-devops-project-5-capstone.git'
+        dest: /repo/
+      register: repo
+
+    - debug: 
+        var: repo
+    
+    - name: run terraform script
+      terraform:
+        project_path: 'cloud-devops-project-5-capstone/1 terraform'
+        state: present
+      register: terraform
+
+    - debug:
+        var: terraform.outputs.kubeconfig.value
+
+    - name: save kubectl config 
+      copy:
+        content: '{{terraform.outputs.kubeconfig.value}}'
+        dest: /home/ubuntu/.kube/config
+        
+    # - name: show dir
+    #   command: pwd
+    #   args: 
+    #     chdir: 'cloud-devops-project-5-capstone/1 terraform'
+    #   register: output1
+
+    # - debug:
+    #     var: output1
+
+    # - name: save kubeconfig
+    #   command: terraform output kubeconfig>~/.kube/config
+    #   args: 
+    #     chdir: 'cloud-devops-project-5-capstone/1 terraform'
+    #   register: output2
+
+    # - debug:
+    #     var: output2
+    # - name: change route 53 hosted zone record
+    #   route53:
+    #     state: present
+    #     zone: design4dong.com
+    #     record: web.design4dong.com
+    #     type: A
+    #     ttl: 7200
+    #     value: "{{myec2.instances[0].public_ip}}"
+    #     wait: yes
+    #   register: mydns
+
+    # - debug:
+    #     var: mydns
