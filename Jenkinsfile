@@ -39,6 +39,7 @@ pipeline {
             agent any
             steps {
                 //kubectl and credentials
+                echo $PATH
                 sh 'kubectl version'
                 // sh 'helm install web ./5 helm/staticweb --wait'
                 // echo 'helm deploy!'
