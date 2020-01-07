@@ -39,7 +39,8 @@ pipeline {
             agent any
             steps {
                 //kubectl and credentials
-                sh 'helm install web ./5 helm/staticweb --wait'
+                sh 'kubectl version'
+                // sh 'helm install web ./5 helm/staticweb --wait'
                 // echo 'helm deploy!'
                 // sh 'ansible-playbook ./4\ ansible/k8s.yml'
             }
