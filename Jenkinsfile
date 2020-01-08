@@ -48,7 +48,7 @@ pipeline {
                   sh 'cat config'
                 }
                 sh 'echo $PATH'
-                sh 'echo $KUBECONFIG=~/.kube/config'
+                sh 'echo $KUBECONFIG'
 
                 sh 'kubectl config view'
 
