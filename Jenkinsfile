@@ -49,6 +49,7 @@ pipeline {
                 }
                 sh 'echo $PATH'
                 sh 'echo $KUBECONFIG'
+                sh 'cat /app/.kube/config'
 
                 sh 'kubectl config view'
 
