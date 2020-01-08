@@ -47,7 +47,7 @@ pipeline {
                 dir('.kube'){
                   sh 'cat config'
                 }
-                sh 'ls -l'
+                sh 'echo $PATH'
 
                 sh 'kubectl config view'
 
