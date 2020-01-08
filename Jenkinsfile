@@ -45,11 +45,10 @@ pipeline {
                 //sh 'eks'
                 // sh 'mkdir ~/.kube'
                 dir('.kube'){
-                  writeFile file:'dummy', text:''
+                  sh 'cat config'
                 }
                 sh 'ls -l'
-                sh 'echo $KUBECONFIG'
-                sh 'cat ~/.kube/config'
+
                 sh 'kubectl config view'
 
                 // dir ('5 helm'){
