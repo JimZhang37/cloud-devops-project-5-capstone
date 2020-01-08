@@ -43,7 +43,7 @@ pipeline {
                 //kubectl and credentials
                 // echo $PATH
                 //sh 'eks'
-                sh 'mkdir ~/.kube'
+                // sh 'mkdir ~/.kube'
                 sh 'cp /root/.kube/config ~/.kube/config'
                 sh 'kubectl version'
                 // dir ('5 helm'){
