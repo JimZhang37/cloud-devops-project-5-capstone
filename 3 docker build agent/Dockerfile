@@ -4,21 +4,21 @@ WORKDIR /app
 
 #kubectl
 COPY kubectl .
-RUN chmod +x ./kubectl
-RUN mv ./kubectl /usr/local/bin/kubectl
+RUN chmod +x ./kubectl && \
+mv ./kubectl /usr/local/bin/kubectl
 #helm
 COPY helm-v3.0.2-linux-amd64.tar.gz .
-RUN tar -xzvf helm-v3.0.2-linux-amd64.tar.gz 
-RUN mv linux-amd64/helm /usr/local/bin/helm 
-RUN mkdir .kube 
-RUN touch .kube/config
+RUN tar -xzvf helm-v3.0.2-linux-amd64.tar.gz  && \
+mv linux-amd64/helm /usr/local/bin/helm  && \
+mkdir .kube && \
+touch .kube/config
 # aws-iam-authenticator
 COPY aws-iam-authenticator .
-RUN chmod +x ./aws-iam-authenticator
-RUN mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$HOME/bin:$PATH
-RUN echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
+RUN chmod +x ./aws-iam-authenticator && \
+ cp ./aws-iam-authenticator /bin/aws-iam-authenticator && export PATH=/bin:$PATH && \
+ echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc && \
 # python pip ansible
-RUN apt-get update && apt-get install -y \
+ apt-get update && apt-get install -y \
     git \
     python-pip \
     ansible \
@@ -26,9 +26,9 @@ RUN apt-get update && apt-get install -y \
     python3-pip
 
 COPY config .
-RUN mkdir /root/.kube
-RUN touch /root/.kube/config
-RUN mv config /root/.kube/config
+RUN mkdir /root/.kube && \
+ touch /root/.kube/config && \
+ mv config /root/.kube/config
 COPY k8s.yml .
 
 RUN pip3 install awscli --upgrade

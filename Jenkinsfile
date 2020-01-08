@@ -37,7 +37,7 @@ pipeline {
         }
         stage('Deploy Blue Stack') {
             agent {
-              docker { image 'zhangyhgg/cicd:3' }
+              docker { image 'zhangyhgg/cicd:4' }
             }
             steps {
                 //kubectl and credentials
