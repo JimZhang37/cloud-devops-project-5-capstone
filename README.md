@@ -167,3 +167,12 @@ green stack deployment
 
 # Day 16 (8 Juanry 2020)
 To connect to a cluster, the pipeline has to have kubectl and the cluster's credentials. But eks's credentials are different. My conclution is I need to install my jenkins build server inside a k8s cluster. The pipeline doesn't need eks credentials once it's running inside a cluster.
+
+1 create a cluster with terraform
+2 use helm v3 to install a jenkins in the cluster
+value file used to specify very plugins needed, such as blueocean
+3 create a docker credentials for docker up upload
+4 install docker plugins in jenkins
+5 run the first half of blue deployment, before kubectl.
+6 run the second half of the blue deployment, with kubectl
+aws role?

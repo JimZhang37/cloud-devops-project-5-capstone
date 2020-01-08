@@ -42,3 +42,9 @@ terraform:
 
 terraformdelete:
 	ansible-playbook terraforminfo.yml
+
+auth:
+	echo LSuperLongBase64EncodedString== | base64 -d > ca.crt
+
+crt:
+	

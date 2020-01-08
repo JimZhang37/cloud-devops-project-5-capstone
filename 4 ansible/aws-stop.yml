@@ -4,7 +4,7 @@
   gather_facts: false
   vars:
     instance_ids:
-      - 'i-066a8f670e946785f'
+      - 'i-07844ade7914f7747'
     region: us-east-2
   tasks:
     - name: Stop the sandbox instances
