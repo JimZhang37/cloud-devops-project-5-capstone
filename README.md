@@ -164,3 +164,6 @@ ansible script to provision build server and k8s cluster
 blue stack deployment
 
 green stack deployment
+
+# Day 16 (8 Juanry 2020)
+To connect to a cluster, the pipeline has to have kubectl and the cluster's credentials. But eks's credentials are different. My conclution is I need to install my jenkins build server inside a k8s cluster. The pipeline doesn't need eks credentials once it's running inside a cluster.

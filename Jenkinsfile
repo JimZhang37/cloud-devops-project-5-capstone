@@ -37,15 +37,16 @@ pipeline {
         }
         stage('Deploy Blue Stack') {
             agent {
-              docker { image 'zhangyhgg/cicd:2' }
+              docker { image 'zhangyhgg/cicd:3' }
             }
             steps {
                 //kubectl and credentials
                 // echo $PATH
-                sh 'kubectl version'
-                // sh 'helm install web ./5 helm/staticweb --wait'
-                // echo 'helm deploy!'
-                // sh 'ansible-playbook ./4\ ansible/k8s.yml'
+                //sh 'eks'
+                //sh 'kubectl version'
+                sh 'helm install web ./5 helm/staticweb --wait'
+                echo 'helm deploy!'
+                sh 'ansible-playbook ./4\ ansible/k8s.yml'
             }
         }
     }
