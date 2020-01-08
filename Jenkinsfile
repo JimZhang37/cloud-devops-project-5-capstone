@@ -46,7 +46,7 @@ pipeline {
                 // sh 'mkdir ~/.kube'
                 
                 //sh 'cp /root/.kube/config ~/.kube/config'
-                sh 'kubectl config view'
+                sh 'echo ~/.kube/config'
                 // dir ('5 helm'){
                 //   sh 'helm install web staticweb --wait'
                 // }
