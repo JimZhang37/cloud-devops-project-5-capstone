@@ -58,7 +58,7 @@ pipeline {
                 // dir ('5 helm'){
                 //   sh 'helm install web staticweb --wait'
                 // }
-                sh 'aws ec2 describe-instances'
+                sh 'aws configure get region --profile default'
                 echo 'helm deploy!'
                 sh 'ansible --version'
                 dir('4 ansible'){
