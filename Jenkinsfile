@@ -43,7 +43,7 @@ pipeline {
                 //kubectl and credentials
                 // echo $PATH
                 //sh 'eks'
-                sh 'kubectl version'
+                sh 'cat /root/.kube/config'
                 // dir ('5 helm'){
                 //   sh 'helm install web staticweb --wait'
                 // }
