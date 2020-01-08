@@ -49,6 +49,7 @@ pipeline {
                   sh 'cat credentials'
                 }
                 sh 'echo $PATH'
+                sh 'echo $AWS_CONFIG_FILE'
                 sh 'echo $KUBECONFIG'
                 sh 'cat .kube/config'
 
