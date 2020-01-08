@@ -48,7 +48,7 @@ pipeline {
                   writeFile file:'dummy', text:''
                 }
                 sh 'ls -l'
-                sh 'cp /app/.kube/config ~/.kube/config'
+                sh 'echo $KUBECONFIG'
                 sh 'cat ~/.kube/config'
                 sh 'kubectl config view'
 
