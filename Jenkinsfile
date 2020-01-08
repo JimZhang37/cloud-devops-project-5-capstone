@@ -44,7 +44,10 @@ pipeline {
                 // echo $PATH
                 //sh 'eks'
                 //sh 'kubectl version'
-                sh 'helm install web ./5 helm/staticweb --wait'
+                dir ('5 helm'){
+                  sh 'helm install web staticweb --wait'
+                }
+                
                 echo 'helm deploy!'
                 sh 'ansible --version'
                 //sh 'ansible-playbook ./4\ ansible/k8s.yml'
