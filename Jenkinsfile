@@ -44,9 +44,14 @@ pipeline {
                 // echo $PATH
                 //sh 'eks'
                 // sh 'mkdir ~/.kube'
-                
-                //sh 'cp /root/.kube/config ~/.kube/config'
-                sh 'echo ~/.kube/config'
+                dir('.kube'){
+                  writeFile file:'dummy', text:''
+                }
+                sh 'ls -l'
+                sh 'cp /root/.kube/config ~/.kube/config'
+                sh 'cat ~/.kube/config'
+                sh 'kubectl config view'
+
                 // dir ('5 helm'){
                 //   sh 'helm install web staticweb --wait'
                 // }
