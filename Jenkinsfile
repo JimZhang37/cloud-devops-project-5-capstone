@@ -43,7 +43,8 @@ pipeline {
                 //kubectl and credentials
                 // echo $PATH
                 //sh 'eks'
-                sh 'pwd'
+                sh 'mkdir ~/.kube'
+                sh 'cp /root/.kube/config ~/.kube/config'
                 // dir ('5 helm'){
                 //   sh 'helm install web staticweb --wait'
                 // }
