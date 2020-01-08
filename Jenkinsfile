@@ -44,8 +44,9 @@ pipeline {
                 // echo $PATH
                 //sh 'eks'
                 // sh 'mkdir ~/.kube'
-                dir('.kube'){
+                dir('.aws'){
                   sh 'cat config'
+                  sh 'cat credentials'
                 }
                 sh 'echo $PATH'
                 sh 'echo $KUBECONFIG'
