@@ -176,3 +176,13 @@ value file used to specify very plugins needed, such as blueocean
 5 run the first half of blue deployment, before kubectl.
 6 run the second half of the blue deployment, with kubectl
 aws role?
+
+
+## Retrun to traditional way
+I decided to return to the old way, which is a jenkins in a EC2 and a independent k8s cluster created by terraform.
+
+To provide kubectl credentials, I created environment varialbe, KUBECONFIG, in jenkins and I put kubeconfiguration file in git hub.
+
+To provide aws credentials, I also used jenkins environment varialbes.
+
+I also created a build agent docker image with all neccesary tools. But one important thing, the agent is not using ubuntu or root. Therefore, I need to put these tools in $PATH specified locations. I once put aws_authentication_file in a new place, but it doesn't work.

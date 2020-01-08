@@ -58,7 +58,13 @@ pipeline {
                 // dir ('5 helm'){
                 //   sh 'helm install web staticweb --wait'
                 // }
+                sh 'aws configure set region us-east-2 --profile default  '
+                sh 'aws configure set output text --profile default  '
+                sh 'aws configure set aws_access_key_id AKIATJ74JRDZC42DAOGU --profile default  '
+                sh 'aws configure set aws_secret_access_key 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 --profile default  '
+
                 sh 'aws configure get region --profile default'
+                
                 echo 'helm deploy!'
                 sh 'ansible --version'
                 dir('4 ansible'){
