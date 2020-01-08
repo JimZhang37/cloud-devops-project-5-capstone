@@ -49,13 +49,13 @@ pipeline {
                 }
                 sh 'echo $PATH'
                 sh 'echo $KUBECONFIG'
-                sh 'cat /app/.kube/config'
+                sh 'cat .kube/config'
 
                 sh 'kubectl config view'
-
-                // dir ('5 helm'){
-                //   sh 'helm install web staticweb --wait'
-                // }
+                sh  'kubectl version'
+                dir ('5 helm'){
+                  sh 'helm install web staticweb --wait'
+                }
                 
                 echo 'helm deploy!'
                 sh 'ansible --version'
