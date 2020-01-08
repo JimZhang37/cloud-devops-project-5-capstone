@@ -52,13 +52,16 @@ pipeline {
                 sh 'cat .kube/config'
 
                 sh 'kubectl config view'
-                sh  'kubectl version'
-                dir ('5 helm'){
-                  sh 'helm install web staticweb --wait'
-                }
-                
+                // sh  'kubectl version'
+                // dir ('5 helm'){
+                //   sh 'helm install web staticweb --wait'
+                // }
+                sh 'aws ec2 describe-instances'
                 echo 'helm deploy!'
                 sh 'ansible --version'
+                dir('4 ansible'){
+                  sh 'ansible-playbook k8s.yml'
+                }
                 //sh 'ansible-playbook ./4\ ansible/k8s.yml'
             }
         }
