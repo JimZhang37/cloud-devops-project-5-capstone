@@ -43,10 +43,10 @@ pipeline {
                 //kubectl and credentials
                 // echo $PATH
                 //sh 'eks'
-                //sh 'kubectl version'
-                dir ('5 helm'){
-                  sh 'helm install web staticweb --wait'
-                }
+                sh 'kubectl version'
+                // dir ('5 helm'){
+                //   sh 'helm install web staticweb --wait'
+                // }
                 
                 echo 'helm deploy!'
                 sh 'ansible --version'
