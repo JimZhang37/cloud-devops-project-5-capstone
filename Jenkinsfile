@@ -44,31 +44,31 @@ pipeline {
                 // echo $PATH
                 //sh 'eks'
                 // sh 'mkdir ~/.kube'
-                dir('.aws'){
-                  sh 'cat config'
-                  sh 'cat credentials'
-                }
+                // dir('.aws'){
+                //   sh 'cat config'
+                //   sh 'cat credentials'
+                // }
                 sh 'echo $PATH'
                 sh 'echo $AWS_CONFIG_FILE'
                 sh 'echo $KUBECONFIG'
                 sh 'cat .kube/config'
 
                 sh 'kubectl config view'
-                // sh  'kubectl version'
+                sh  'kubectl version'
                 // dir ('5 helm'){
                 //   sh 'helm install web staticweb --wait'
                 // }
-                sh 'aws configure set region us-east-2 --profile default  '
-                sh 'aws configure set output text --profile default  '
-                sh 'aws configure set aws_access_key_id AKIATJ74JRDZC42DAOGU --profile default  '
-                sh 'aws configure set aws_secret_access_key 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 --profile default  '
+                // sh 'aws configure set region us-east-2 --profile default  '
+                // sh 'aws configure set output text --profile default  '
+                // sh 'aws configure set aws_access_key_id AKIATJ74JRDZC42DAOGU --profile default  '
+                // sh 'aws configure set aws_secret_access_key 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 --profile default  '
 
                 sh 'aws configure get region --profile default'
                 
-                echo 'helm deploy!'
+                // echo 'helm deploy!'
                 sh 'ansible --version'
                 dir('4 ansible'){
-                  sh 'ansible-playbook k8s.yml'
+                  sh 'ansible-playbook aws.yml'
                 }
                 //sh 'ansible-playbook ./4\ ansible/k8s.yml'
             }
