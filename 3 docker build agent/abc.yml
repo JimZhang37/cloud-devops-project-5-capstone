@@ -6,7 +6,7 @@
 
   tasks:
     - name: install epel repo
-      yum: name=nginx state=present
+      command: ls
 
 
 
