@@ -30,11 +30,13 @@ RUN chmod +x ./aws-iam-authenticator && \
 #  mv config /root/.kube/config
 # COPY k8s.yml .
 
-RUN pip3 install awscli --upgrade
+RUN pip3 install awscli --upgrade && \
+pip install openshift && pip install kubernetes
 
-# COPY credentials .
-# COPY configaws .
-# RUN mkdir /root/.aws
-# COPY ./credentials /root/.aws/credentials
-# COPY ./configaws /root/.aws/config
+
+COPY credentials .
+COPY configaws .
+RUN mkdir /root/.aws
+COPY ./credentials /root/.aws/credentials
+COPY ./configaws /root/.aws/config
 
