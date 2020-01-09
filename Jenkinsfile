@@ -30,14 +30,14 @@ pipeline {
 
                 script {
                   docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                      customImage.push("3")
+                      customImage.push("1")
                   }
                 }
             }
         }
         stage('Deploy Blue Stack') {
             agent {
-              docker { image 'zhangyhgg/cicd:5' }
+              docker { image 'zhangyhgg/cicd:1' }
             }
             steps {
                 //kubectl and credentials

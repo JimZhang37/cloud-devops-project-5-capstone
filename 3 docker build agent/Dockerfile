@@ -24,13 +24,14 @@ RUN chmod +x ./aws-iam-authenticator && \
     python3-pip
 
 
-
+# install awscli, ansible, openshift, boto. They are needed for ansible modules
 RUN pip3 install awscli --upgrade && \
 pip install ansible --upgrade && \
-pip install openshift --upgrade
+pip install openshift --upgrade && \
+pip install boto --upgrade
 
 
-
+# copy credentials for aws and k8s
 COPY credentials .
 COPY configaws .
 RUN mkdir /root/.aws
@@ -42,4 +43,4 @@ RUN mkdir /root/.kube && \
  touch /root/.kube/config && \
  mv config /root/.kube/config
 COPY k8s.yml .
-RUN KUBECONFIG=/root/.kube/config
+
