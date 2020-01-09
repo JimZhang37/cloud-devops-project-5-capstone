@@ -3,43 +3,45 @@ pipeline {
     agent none
 
     stages {
-        stage('Build Static Website') {
-            agent any
-            steps {
-                dir ('2 static web site'){
-                  sh 'pwd'
-                  script {
-                      customImage = docker.build("zhangyhgg/hellonode")
+        // stage('Build Static Website') {
+        //     agent any
+        //     steps {
+        //         dir ('2 static web site'){
+        //           sh 'pwd'
+        //           script {
+        //               customImage = docker.build("zhangyhgg/hellonode")
 
-                  }
-                }
-                echo 'Hello world!'
-                sh 'pwd'
-            }
-        }
-        stage('Test Docker Image') {
-            agent any
-            steps {
-                echo 'Hello world!'
-                sh 'pwd'
-            }
-        }
-        stage('Upload Docker Image') {
-            agent any
-            steps {
+        //           }
+        //         }
+        //         echo 'Hello world!'
+        //         sh 'pwd'
+        //     }
+        // }
+        // stage('Test Docker Image') {
+        //     agent any
+        //     steps {
+        //         echo 'Hello world!'
+        //         sh 'pwd'
+        //     }
+        // }
+        // stage('Upload Docker Image') {
+        //     agent any
+        //     steps {
 
-                script {
-                  docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                      customImage.push("1")
-                  }
-                }
-            }
-        }
-        stage('Deploy Blue Stack') {
+        //         script {
+        //           docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+        //               customImage.push("1")
+        //           }
+        //         }
+        //     }
+        // }
+        stage('test ansible') {
             agent {
               docker { image 'zhangyhgg/cicd:10' }
             }
             steps {
+              sh 'which ansible'
+              ansiblePlaybook  playbook: 'test.yml'
                 //kubectl and credentials
                 // echo $PATH
                 //sh 'eks'
@@ -54,10 +56,10 @@ pipeline {
                 // sh 'cat .kube/config'
 
                 // sh 'kubectl config view'
-                sh  'pwd'
-                dir ('5 helm'){
-                  sh 'helm install web2 ./newweb --wait'
-                }
+                // sh  'pwd'
+                // dir ('5 helm'){
+                //   sh 'helm install web2 ./newweb --wait'
+                // }
                 // sh 'aws configure set region us-east-2 --profile default  '
                 // sh 'aws configure set output text --profile default  '
                 // sh 'aws configure set aws_access_key_id AKIATJ74JRDZC42DAOGU --profile default  '
@@ -75,15 +77,15 @@ pipeline {
             }
         }
 
-        stage('change dns') {
-          agent any
-          steps {
+        // stage('change dns') {
+        //   agent any
+        //   steps {
 
-                // sh 'ansible-playbook k8s.yml'
-                ansiblePlaybook  playbook: '4 ansible/k8s.yml'
+        //         // sh 'ansible-playbook k8s.yml'
+        //         ansiblePlaybook  playbook: '4 ansible/k8s.yml'
 
-              }
-        }
+        //       }
+        // }
         
     }
 }

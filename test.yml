@@ -1,0 +1,28 @@
+---
+- name: simple playbook
+  hosts: localhost
+  gather_facts: false
+
+
+  tasks:
+    - name: Get an existing Service object
+      command: pwd
+      register: pwd
+
+    - debug: 
+        var: pwd
+
+    # - name: change route 53 hosted zone record
+    #   route53:
+    #     state: present
+    #     zone: design4dong.com
+    #     record: www.design4dong.com
+    #     type: CNAME
+    #     overwrite: yes
+    #     ttl: 7200
+    #     value: "{{web_service.resources[0].status.loadBalancer.ingress[0].hostname}}"
+    #     wait: yes
+    #   register: mydns
+  
+    # - debug:
+    #     var: mydns
