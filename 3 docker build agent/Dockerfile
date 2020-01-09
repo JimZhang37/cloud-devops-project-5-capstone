@@ -26,7 +26,9 @@ RUN chmod +x ./aws-iam-authenticator && \
 
 
 RUN pip3 install awscli --upgrade && \
-pip install ansible
+pip install ansible --upgrade && \
+pip install openshift --upgrade
+
 
 
 COPY credentials .
