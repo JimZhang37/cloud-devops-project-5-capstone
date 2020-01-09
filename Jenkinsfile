@@ -66,7 +66,7 @@ pipeline {
                 // sh 'aws configure get region --profile default'
                 
                 // echo 'helm deploy!'
-                sh 'ansible --version'
+                // sh 'ansible --version'
                 dir('4 ansible'){
                   sh 'ansible-playbook k8s.yml'
                 }
