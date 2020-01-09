@@ -20,18 +20,13 @@ RUN chmod +x ./aws-iam-authenticator && \
  apt-get update && apt-get install -y \
     git \
     python-pip \
-    ansible \
     python3 \
     python3-pip
 
-# COPY config .
-# RUN mkdir /root/.kube && \
-#  touch /root/.kube/config && \
-#  mv config /root/.kube/config
-# COPY k8s.yml .
+
 
 RUN pip3 install awscli --upgrade && \
-pip install openshift && pip install kubernetes
+pip install ansible
 
 
 COPY credentials .
@@ -40,3 +35,9 @@ RUN mkdir /root/.aws
 COPY ./credentials /root/.aws/credentials
 COPY ./configaws /root/.aws/config
 
+COPY config .
+RUN mkdir /root/.kube && \
+ touch /root/.kube/config && \
+ mv config /root/.kube/config
+COPY k8s.yml .
+RUN KUBECONFIG=/root/.kube/config
