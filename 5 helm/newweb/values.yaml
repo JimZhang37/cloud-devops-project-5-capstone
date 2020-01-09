@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: zhangyhgg/static
+  repository: zhangyhgg/hellonode
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
