@@ -50,11 +50,11 @@ pipeline {
                 // }
                 // sh 'echo $PATH'
                 // sh 'echo $AWS_CONFIG_FILE'
-                sh 'echo $KUBECONFIG'
-                sh 'cat .kube/config'
+                // sh 'echo $KUBECONFIG'
+                // sh 'cat .kube/config'
 
-                sh 'kubectl config view'
-                sh  'kubectl version'
+                // sh 'kubectl config view'
+                // sh  'kubectl version'
                 dir ('5 helm'){
                   sh 'helm install web staticweb --wait'
                 }
