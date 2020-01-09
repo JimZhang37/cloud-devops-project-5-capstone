@@ -54,7 +54,7 @@ pipeline {
                 // sh 'cat .kube/config'
 
                 // sh 'kubectl config view'
-                // sh  'kubectl version'
+                sh  'pwd'
                 dir ('5 helm'){
                   sh 'helm install web staticweb --wait'
                 }
