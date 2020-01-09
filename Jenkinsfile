@@ -37,7 +37,7 @@ pipeline {
         // }
         stage('test ansible') {
             agent {
-              docker { image 'zhangyhgg/cicd:10' }
+              docker { image 'zhangyhgg/cicd:11' }
             }
             steps {
               sh 'which ansible'

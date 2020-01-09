@@ -45,3 +45,5 @@ RUN mkdir /root/.kube && \
 COPY k8s.yml .
 
 RUN mkdir /.ansible && mkdir /.ansible/tmp
+
+USER root
