@@ -78,10 +78,10 @@ pipeline {
         stage('change dns') {
           agent any
           steps {
-              dir('4 ansible'){
+
                 // sh 'ansible-playbook k8s.yml'
                 ansiblePlaybook  playbook: '4 ansible/k8s.yml'
-              }
+
               }
         }
         
