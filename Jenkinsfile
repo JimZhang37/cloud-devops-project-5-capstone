@@ -62,13 +62,14 @@ pipeline {
                 }
             }
         }
-        stage('Deploy Blue Stack') {
+        stage('Deploy Green Stack') {
             agent {
               docker { image 'zhangyhgg/cicd:1' }
             }
             steps {
                 sh 'pwd'
                 sh 'echo $WORKSPACE'
+                sh 'KUBECONFIG=${WORKSPACE}'
                 sh 'echo $KUBECONFIG'
                 // sh 'cat /var/jenkins_home/workspace/devops-project-5-capstone_master/.kube/config'
                 sh 'kubectl version'
