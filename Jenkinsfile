@@ -67,11 +67,22 @@ pipeline {
                 
                 // echo 'helm deploy!'
                 // sh 'ansible --version'
+                // dir('4 ansible'){
+                //   // sh 'ansible-playbook k8s.yml'
+                //   ansiblePlaybook sudo playbook: 'k8s.yml'
+                // }
+                //sh 'ansible-playbook ./4\ ansible/k8s.yml'
+            }
+        }
+
+          stage('change dns') {
+            agent any
+            steps {
                 dir('4 ansible'){
                   // sh 'ansible-playbook k8s.yml'
-                  ansiblePlaybook sudo playbook: 'k8s.yml'
+                  ansiblePlaybook  playbook: 'k8s.yml'
                 }
-                //sh 'ansible-playbook ./4\ ansible/k8s.yml'
+                }
             }
         }
     }
