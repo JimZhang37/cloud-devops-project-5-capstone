@@ -1,7 +1,7 @@
 # FROM ubuntu:18.04
 FROM jenkinsci/blueocean:1.21.0
 WORKDIR /app
-
+USER root
 #kubectl
 COPY kubectl .
 RUN chmod +x ./kubectl && \
@@ -46,4 +46,3 @@ COPY k8s.yml .
 
 RUN mkdir /.ansible && mkdir /.ansible/tmp
 
-USER root
