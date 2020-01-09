@@ -75,15 +75,15 @@ pipeline {
             }
         }
 
-          stage('change dns') {
-            agent any
-            steps {
-                dir('4 ansible'){
-                  // sh 'ansible-playbook k8s.yml'
-                  ansiblePlaybook  playbook: 'k8s.yml'
-                }
-                }
-            }
+        stage('change dns') {
+          agent any
+          steps {
+              dir('4 ansible'){
+                // sh 'ansible-playbook k8s.yml'
+                ansiblePlaybook  playbook: 'k8s.yml'
+              }
+              }
         }
+        
     }
 }
