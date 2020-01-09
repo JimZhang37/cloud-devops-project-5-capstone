@@ -72,7 +72,6 @@ pipeline {
                 // sh 'cat /var/jenkins_home/workspace/devops-project-5-capstone_master/.kube/config'
                 sh 'kubectl version'
                 dir ('5 helm'){
-                  
                   sh 'helm install web3 ./newweb --wait'
                 }
             }
