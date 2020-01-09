@@ -17,7 +17,7 @@ COPY aws-iam-authenticator .
 RUN chmod +x ./aws-iam-authenticator && \
  mv ./aws-iam-authenticator /usr/local/bin/aws-iam-authenticator && \
 # python pip ansible
- apk update && apk add -y \
+ apt-get update && apt-get install -y \
     git \
     python-pip \
     python3 \
