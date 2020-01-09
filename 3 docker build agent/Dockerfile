@@ -1,5 +1,5 @@
-# FROM ubuntu:18.04
-FROM jenkinsci/blueocean:1.21.0
+FROM ubuntu:18.04
+# FROM jenkinsci/blueocean:1.21.0
 WORKDIR /app
 USER root
 #kubectl
