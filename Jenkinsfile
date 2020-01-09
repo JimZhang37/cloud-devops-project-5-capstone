@@ -69,9 +69,7 @@ pipeline {
         }
 
         stage('change dns') {
-            agent {
-              docker { image 'zhangyhgg/cicd:1' }
-            }
+            agent any
           steps {
                 //sh 'ANSIBLE_LOCAL_TEMP=/var/jenkins_home/workspace/devops-project-5-capstone_master/.ansible/tmp ansible-playbook ./4 ansible/k8s.yml'
                 dir ('4 ansible'){
