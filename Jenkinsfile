@@ -56,7 +56,7 @@ pipeline {
                 // sh 'kubectl config view'
                 sh  'pwd'
                 dir ('5 helm'){
-                  sh 'helm install web ./staticweb --wait'
+                  sh 'helm install web ./newweb --wait'
                 }
                 // sh 'aws configure set region us-east-2 --profile default  '
                 // sh 'aws configure set output text --profile default  '

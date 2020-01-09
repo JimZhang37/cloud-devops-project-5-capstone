@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "staticweb.fullname" . }}
+  name: {{ include "newweb.fullname" . }}
   labels:
-    {{- include "staticweb.labels" . | nindent 4 }}
+    {{- include "newweb.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "staticweb.selectorLabels" . | nindent 4 }}
+    {{- include "newweb.selectorLabels" . | nindent 4 }}
