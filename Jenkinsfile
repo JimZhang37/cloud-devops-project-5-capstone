@@ -57,7 +57,7 @@ pipeline {
 
                 script {
                   docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                      customImage.push("1")
+                      customImage.push("2")
                   }
                 }
             }
@@ -72,7 +72,7 @@ pipeline {
                 // sh 'kubectl version'
                 dir ('5 helm'){
                   
-                  sh 'helm install web2 ./newweb --wait'
+                  sh 'helm install web3 ./newweb --wait'
                 }
             }
         }

@@ -3,7 +3,7 @@
 The jenkins build server uses a docker container agent as it can install helm, ansible in the docker image.
 
 ## how to test the image
-run
+docker run -it zhangyhgg/cicd:? bash
 aws s3 ls
 kubectl version
 ansible-playbook k8s.yml
