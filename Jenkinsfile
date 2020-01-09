@@ -25,6 +25,14 @@ pipeline {
                 }
             }
         }
+        stage('Test Static Website') {
+            agent any
+            steps {
+                dir ('2 static web site'){
+                  sh 'html_lint.py *.html'
+                }
+            }
+        }
         stage('Build Static Website') {
             agent any
             steps {
@@ -35,13 +43,13 @@ pipeline {
                 }
             }
         }
-        stage('Test Docker Image') {
-            agent any
-            steps {
-                echo 'Hello world!'
-                sh 'pwd'
-            }
-        }
+        // stage('Test Docker Image') {
+        //     agent any
+        //     steps {
+        //         echo 'Hello world!'
+        //         sh 'pwd'
+        //     }
+        // }
         stage('Upload Docker Image') {
             agent any
             steps {
