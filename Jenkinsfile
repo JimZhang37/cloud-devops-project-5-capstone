@@ -29,7 +29,8 @@ pipeline {
             agent any
             steps {
                 dir ('2 static web site'){
-                  sh 'html_lint.py *.html'
+                  //sh 'html_lint.py *.html'
+                  sh 'tidy -q -e *.html'
                 }
             }
         }
