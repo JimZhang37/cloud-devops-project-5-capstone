@@ -44,5 +44,6 @@ RUN mkdir /root/.kube && \
  mv config /root/.kube/config
 COPY k8s.yml .
 
+# folder used for ansible local tempt file
 RUN mkdir /.ansible && mkdir /.ansible/tmp
 

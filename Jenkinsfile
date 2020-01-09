@@ -1,20 +1,38 @@
 def customImage
+def buildAgent
 pipeline {
     agent none
 
     stages {
+        stage('Build Agent Image') {
+            agent any
+            steps {
+                dir ('3 docker build agent'){
+                  script {
+                      buildAgent = docker.build("zhangyhgg/cicd")
+                  }
+                }
+            }
+        }
+        stage('Upload Agent Image') {
+            agent any
+            steps {
+
+                script {
+                  docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                      customImage.push("1")
+                  }
+                }
+            }
+        }
         stage('Build Static Website') {
             agent any
             steps {
                 dir ('2 static web site'){
-                  sh 'pwd'
                   script {
                       customImage = docker.build("zhangyhgg/hellonode")
-
                   }
                 }
-                echo 'Hello world!'
-                sh 'pwd'
             }
         }
         stage('Test Docker Image') {
