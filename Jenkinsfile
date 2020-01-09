@@ -58,7 +58,7 @@ pipeline {
               docker { image 'zhangyhgg/cicd:1' }
             }
             steps {
-
+                sh 'echo $KUBECONFIG'
                 dir ('5 helm'){
                   sh 'helm install web2 ./newweb --wait'
                 }
