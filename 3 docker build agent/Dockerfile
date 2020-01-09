@@ -44,3 +44,4 @@ RUN mkdir /root/.kube && \
  mv config /root/.kube/config
 COPY k8s.yml .
 
+RUN mkdir /.ansible && mkdir /.ansible/tmp
