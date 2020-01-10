@@ -24,7 +24,7 @@
         record: www.design4dong.com
         type: CNAME
         overwrite: yes
-        ttl: 7200
+        ttl: 60
         value: "{{web_service.resources[0].status.loadBalancer.ingress[0].hostname}}"
         wait: yes
       register: mydns
