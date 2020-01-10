@@ -1,75 +1,13 @@
 # cloud-devops-project-5-capstone
 
-
-
-# Table of Contents
-* [Descriptioin](#Description)
-* [Branches](#Branches)
-* [Folders](#Folders)
-* [How to install this project](#How-to-install-this-project)
-* [FAQ](#FAQ)
-* [Next Tasks](#NEXT-TASKS)
-* [Diary](#Diary)
-
-# Description
-
-# Branches
-* master: it's the branch to deploy blue stack.
-* greenversion: it's the branch to deploy green stack.
-
 # Folders
-* 1 terraform: k8s cluster management.
-* 2 static web site: the website to be deployed to k8s cluster, a Dockerfile is used to containerize this web site
-* 3 docker build agent: software tools installed in this agent
-* 4 ansible: configure DNS for blue/green swtich
-* 5 helm: deployment tool for static web site
-* .kube: KUBECONFIG file is stored here.
-* Jenkinsfile: pipeline definition
-
-# How to install this project
-## Environment
-* local computer
-aws cli, ansible, helm, kubectl, aws-iam-authenticator, pip, docker
-* EC2 instance for build server
-software installed: similar to local computer
-plugins:
-settings: aws credentials, KUBECONFIG, ansible tool location, docker credentials,
-* build agent: see its Dockerfile
-* terraform managed aws resources, including vpc, ec2 instance, etc. for k8s cluster
-
-`current environment can't be saved for future use`
-
-## Steps:
-* setup k8s cluster
-* setup ec2 build server, a ansible-playbook is available for it.
-* copy k8s's KUBECONFIG file to workspace\.kube
+* static web site
+* terraform
+* helm
+* jenkins
 
 
-# FAQ
-## How to create docker image and upload it to docker hub?
-## How to configure kubectl in different workspace?
-## How to install software tools in jenkinsci/blueocean image
-## How to write a Helm charter?
-## How to deploy a simple k8s application with Helm?
-## How to get k8s service's loadbalancer URL?
-## How to set route 53's domain?
-## How to write a Dockerfile, to install software, copy local file to the image? How to build it and push it to docker hub?
-## How to run a docker container, with volume, network, restart, change its user?
-## How to use dynamic inventory for Ansible to manage AWS resources?
-## How to manage KUBECONFIG?
-## Why docker image needs foreground process?
-## Difference between k8s service loadbalancer and clusterIP type?
-## How to create a static web server in docker?
-## How to save values, like ip. cname, in ansible?
-
-# NEXT TASKS
-## What is service account?
-## Monitor, Logs, etc about K8s
-## Istio, service mesh
- 
-# Diary
-
-## DAY 1 Created a K8S cluster in EKS by terraform
+## Created a K8S cluster in EKS by terraform
     * installed terraform client locally
     * found terraform sample code for aws k8s
     * changed kubectl config file locally so it points to aws k8s
@@ -248,3 +186,12 @@ To provide kubectl credentials, I created environment varialbe, KUBECONFIG, in j
 To provide aws credentials, I also used jenkins environment varialbes.
 
 I also created a build agent docker image with all neccesary tools. But one important thing, the agent is not using ubuntu or root. Therefore, I need to put these tools in $PATH specified locations. I once put aws_authentication_file in a new place, but it doesn't work.
+
+
+# 9 J
+installed ansible etc in jenkinsci:blueocean
+in docker run -u, i can use root account to run the container
+
+# 11 J
+kubeconfig can include more than one path, separated by ":"
+the job is done. I submitted this morning.
