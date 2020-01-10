@@ -186,3 +186,8 @@ To provide kubectl credentials, I created environment varialbe, KUBECONFIG, in j
 To provide aws credentials, I also used jenkins environment varialbes.
 
 I also created a build agent docker image with all neccesary tools. But one important thing, the agent is not using ubuntu or root. Therefore, I need to put these tools in $PATH specified locations. I once put aws_authentication_file in a new place, but it doesn't work.
+
+
+# 10 J
+installed ansible etc in jenkinsci:blueocean
+in docker run -u, i can use root account to run the container
