@@ -12,6 +12,12 @@
 * [Diary](#Diary)
 
 # Description
+It's an automated proecess to deploy a website into a k8s cluster. If it's the first time the application is deployed, you can you the branch `master`. It will deploy the application in a cluster, assign a DNS name to it. When the deployment is done, you will see the application in the URL.
+
+If you modified your application, you can checkout to branch `greenversion` and run the pipeline again. It will deploy the new version to the same k8s cluster, but a new k8s service, loadbalancer, etc. will be created for it. At the end of the deployment, the DNS name will be assinged to the green stack.
+
+After the green deployment, the blue stack is still available, since its service is not uninstalled. If anything bad happens, you can still switch back to the old stack.
+
 
 # Branches
 * master: it's the branch to deploy blue stack.
