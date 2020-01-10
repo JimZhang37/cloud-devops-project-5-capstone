@@ -20,7 +20,7 @@ If you modified your application, you can checkout to a new branch, `greenversio
 
 After the green deployment, the blue stack is still available, since its service is not uninstalled. If anything bad happens, you can still switch back to the old stack.
 
-The pipelines in both green and blue stacks are the same. So when you want to make furhter change to your website, you dont' need to change the pipeline. The only thing you have to do is to change the source code for the web site.
+The pipelines in both green and blue stacks are almost the same. So when you want to make furhter change to your website, you dont' need to think too much about the pipeline. You can focus on changing the source code for the web site, its helm chart. In the pipeline, you need to modify the helm application name.
 
 # Branches
 * master: it's the branch to deploy blue stack.
