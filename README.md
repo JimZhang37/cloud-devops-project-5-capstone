@@ -14,7 +14,7 @@
 # Description
 It's an automated process to deploy a website into a k8s cluster. If it's the first time the application is deployed, you can use the branch `master`. It will deploy the application in a cluster, assign a DNS name to it. When the deployment is done, you will see the application in the URL.
 
-![blue stack]("6 pictures/blue website.png")
+![blue stack](6-pictures/blue-website.png)
 
 If you modified your application, you can checkout to a new branch, `greenversion`. After you modify your website's source code, you can run the pipeline again. It will deploy the new version to the same k8s cluster, but a new k8s service, loadbalancer, etc. will be created for it. At the end of the deployment, the original DNS name, which was assigned to the previous version, will be assinged to the green stack.
 
